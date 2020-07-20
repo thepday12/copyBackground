@@ -4,69 +4,95 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
     android:orientation="vertical"
-    android:padding="16dp"
     >
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
-        <TextView
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:text="Thời gian chạy"
-            android:layout_gravity="center_vertical"
-            android:layout_marginRight="8dp"/>
-        <EditText
-            android:id="@+id/etPeriod"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="8dp"
-        >
-        <TextView
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:text="File chạy"
-            android:layout_gravity="center_vertical"
-            android:layout_marginRight="8dp"/>
-        <TextView
-            android:id="@+id/tvPathFile"
-            android:text="~/Download/copy_script.txt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="16dp"
-        >
-        <Button
-            android:id="@+id/btShowFileContent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:background="@color/colorAccent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/etPeriod"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="8dp"
+                android:text="Thời gian chạy" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="8dp"
+                android:text="File chạy" />
+
+            <TextView
+                android:id="@+id/tvPathFile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="~/Download/copy_script.txt" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:layout_marginRight="8dp"
-            android:textColor="@android:color/white"
-            android:layout_weight="1"
-            android:text="Show File" />
-    <Button
-        android:id="@+id/btStartScript"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btShowFileContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="8dp"
+                android:layout_weight="1"
+                android:background="@color/colorAccent"
+                android:text="Show File"
+                android:textColor="@android:color/white" />
+
+            <Button
+                android:id="@+id/btStartScript"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary"
+                android:text="Bắt đầu"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:background="@color/colorPrimary"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginLeft="8dp"
-        android:textColor="@android:color/white"
-        android:layout_weight="1"
-        android:text="Bắt đầu" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvData"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:background="#e1bee7"/>
     </LinearLayout>
 </LinearLayout>

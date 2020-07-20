@@ -15,6 +15,9 @@ import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.encapital.io.copybackground.service.FloatingViewService;
 import com.google.gson.Gson;
@@ -29,6 +32,7 @@ public class HomeActivity extends AppCompatActivity {
     private static final int CODE_DRAW_OVER_OTHER_APP_PERMISSION = 2084;
     private Button btStartScript, btShowFileContent;
     private EditText etPeriod;
+    private RecyclerView rvData;
     private static final int FILE_SELECT_CODE = 0;
     private Gson gson= new Gson();
 
@@ -53,6 +57,10 @@ public class HomeActivity extends AppCompatActivity {
         return data;
     }
 
+    private void handlerShowFile(){
+        List<String> dataScript = readFileScript();
+        rvData.setAdapter(new LineAdapter(dataScript));
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,16 +71,24 @@ public class HomeActivity extends AppCompatActivity {
         etPeriod = findViewById(R.id.etPeriod);
         btStartScript = findViewById(R.id.btStartScript);
         btShowFileContent = findViewById(R.id.btShowFileContent);
+        rvData = findViewById(R.id.rvData);
+
+        // in content do not change the layout size of the RecyclerView
+        rvData.setHasFixedSize(true);
+        // use a linear layout manager
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        rvData.setLayoutManager(layoutManager);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rvData.getContext(),
+                layoutManager.getOrientation());
+        rvData.addItemDecoration(dividerItemDecoration);
+
         etPeriod.setText(String.valueOf(MySharedPreferences.getPeriod()));
 
-
+        handlerShowFile();
         btShowFileContent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                File copyScriptFile = getCopyScriptFile();
-                if (!copyScriptFile.exists()) {
-                    Toast.makeText(HomeActivity.this, "File không tồn tại", Toast.LENGTH_SHORT).show();
-                }
+                handlerShowFile();
             }
         });
 

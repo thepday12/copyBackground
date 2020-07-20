@@ -6,8 +6,8 @@ import android.content.SharedPreferences;
 
 public class MySharedPreferences {
     private static SharedPreferences mSharedPref;
-    public static final String PERIOD_KEY = "PERIOD";
-    public static final String SCRIPT_COPY = "SCRIPT_COPY";
+    private static final String PERIOD_KEY = "PERIOD";
+    private static final String SCRIPT_COPY = "SCRIPT_COPY";
 
     private MySharedPreferences()
     {
